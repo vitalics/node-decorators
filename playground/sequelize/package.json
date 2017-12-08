@@ -1,0 +1,32 @@
+{
+  "name": "@decorators/sequelize-socket",
+  "version": "1.0.0",
+  "description": "node decorators",
+  "main": "index.js",
+  "dependencies": {
+    "@decorators/sequelize": "../../sequelize",
+    "@types/sequelize": ">=4.0.79",
+    "typescript": ">=2.6.2"
+  },
+  "keywords": [
+    "nodejs",
+    "sequelize",
+    "node decorators",
+    "typescript"
+  ],
+  "author": "Serhii Sol",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/serhiiso/node-decorators/issues"
+  },
+  "engines": {
+    "node": ">=7.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/serhiiso/node-decorators.git"
+  },
+  "scripts": {
+    "compile": "tsc"
+  }
+}

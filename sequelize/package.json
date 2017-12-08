@@ -1,0 +1,36 @@
+{
+  "name": "@decorators/sequelize",
+  "version": "1.0.0",
+  "description": "node decorators - decorators for sequelize.js library",
+  "main": "src/index.js",
+  "dependencies": {
+    "sequelize": ">=4.27.0",
+    "@decorators/di": ">=1.0.1"
+  },
+  "devDependencies": {
+    "@types/sequelize": ">=4.0.79",
+    "typescript": ">=2.6.2"
+  },
+  "keywords": [
+    "nodejs",
+    "sequelize",
+    "node decorators",
+    "typescript"
+  ],
+  "author": "Serhii Sol",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/serhiiso/node-decorators/issues"
+  },
+  "engines": {
+    "node": ">=7.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/serhiiso/node-decorators.git"
+  },
+  "scripts": {
+    "compile": "tsc",
+    "clean-tsc": "find . -name \"*.js\" -type f -not -path \"./node_modules/*\" -delete && find . -name \"*.js.map\" -type f -not -path \"./node_modules/*\" -delete && find . -name \"*.d.ts\" -type f -not -path \"./node_modules/*\" -not -path \"./types/*\" -delete"
+  }
+}
