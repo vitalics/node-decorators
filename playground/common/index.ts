@@ -1,4 +1,4 @@
-import { Catch } from '@decorators/common';
+import { Log } from '@decorators/common';
 
 class Animal {
 

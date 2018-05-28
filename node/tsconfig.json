@@ -1,0 +1,23 @@
+{
+    "compileOnSave": false,
+    "compilerOptions": {
+        "declaration": true,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "noEmitOnError": true,
+        "noImplicitAny": false,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "rootDir": ".",
+        "inlineSourceMap": true,
+        "target": "es6",
+        "inlineSources": true,
+        "pretty": true,
+        "strict": true
+    },
+    "files": [
+        "./index.ts"
+    ]
+}

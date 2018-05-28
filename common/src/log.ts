@@ -2,16 +2,16 @@ import { getMeta } from './meta';
 
 /**
  * Clone class properties correctly to target, getters and setters will be copied as well
- * @param {Object} obj Original Object
- * @param {Object} target Target Object
+ * @param {object} obj Original Object
+ * @param {object} target Target Object
  */
-function cloneClass(obj: Object, target: Object): Object {
+function cloneClass(obj: object, target: object): object {
   let statics: string[] = Object.getOwnPropertyNames(obj);
   for (let key of statics) {
     let descriptor = Reflect.getOwnPropertyDescriptor(obj, key);
     if (descriptor) {
       Reflect.defineProperty(target, key, descriptor);
-    } else { 
+    } else {
       target[key] = obj[key];
     }
   }
@@ -22,9 +22,9 @@ function cloneClass(obj: Object, target: Object): Object {
  * Log class
  * @param {Function} [loggerFn] Logger function to execute, instead of native log
  */
-function LogClass(loggerFn?: Function) {
+function LogClass(loggerFn?: (...args: any[]) => any) {
 
-  return function LogClass(OriginalClass) {
+  return function LogWrapper(OriginalClass) {
     const className = OriginalClass.name;
 
     function CopyClass(...args) {
@@ -35,7 +35,7 @@ function LogClass(loggerFn?: Function) {
       } else {
         console.log(`LogClass: new ${className}(${logArgs})`);
       }
-      
+
       return new OriginalClass(...args);
     }
 
@@ -64,8 +64,8 @@ function LogMethod(loggerFn?: Function) {
       } else {
         console.log(`LogMethod: ${className}.${key}(${logArgs}) =>`, JSON.stringify(result));
       }
-      
-      
+
+
       return result;
     };
 
@@ -80,8 +80,8 @@ function LogMethod(loggerFn?: Function) {
  */
 function LogProperty(loggerFn?: Function) {
   return function LogProperty(
-    target: any, 
-    key: string, 
+    target: any,
+    key: string,
     descriptor: PropertyDescriptor = Object.getOwnPropertyDescriptor(target, key)
   ) {
     const className = target.constructor.name;
@@ -95,7 +95,7 @@ function LogProperty(loggerFn?: Function) {
       if (loggerFn) {
         loggerFn(className, key, val, 'get');
       } else {
-        console.log(`LogProperty_Get: ${className}.${key} => ${val}`);      
+        console.log(`LogProperty_Get: ${className}.${key} => ${val}`);
       }
 
       return val;
@@ -109,7 +109,7 @@ function LogProperty(loggerFn?: Function) {
       }
 
 
-      if (descriptor) {          
+      if (descriptor) {
         return _set.call(this, val);;
       }
       value = val;
@@ -133,8 +133,8 @@ function LogProperty(loggerFn?: Function) {
  * Log function, generic function to log different types of class members
  * @param {Function} [loggerFn] Logger function to execute, instead of native log
  */
-export function Log(loggerFn?: Function) {
-  return function Log(...args: any[]) {
+export function Log(loggerFn?: (...args: any[]) => any) {
+  return function LogWrapper(...args: any[]) {
     switch (args.length) {
       case 1:
         return LogClass(loggerFn).apply(this, args);
