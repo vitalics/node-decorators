@@ -36,6 +36,16 @@
       "outFiles": [
         "${workspaceFolder}/**/*.js"
       ]
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Playground/Node",
+      "args": [
+        "-r",
+        "${workspaceFolder}/playground/node/node_modules/ts-node/register",
+        "${workspaceFolder}/playground/node/index.ts"
+      ]
     }
   ]
 }
